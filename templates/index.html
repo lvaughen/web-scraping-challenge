@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Mars Data</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        table,
+        td,
+        th {
+            border: 1px solid black;
+            width: 400px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="jumbotron text-center">
+            <h1 class="bold_text">Mission to Mars</h1>
+            <p><a class="btn btn-primary btn-lg" href="http://127.0.0.1:5000/scrape" role="button">Scrape New Data</a>
+            </p>
+        </div>
+
+        <!-- Mars News Data -->
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="heading" class="bold_text">Latest Mars News</h2>
+                <h3 class="heading">{{listings.Mars_headline}}</h2>
+                    <p>{{listings.Mars_teaser}}</p>
+            </div>
+        </div>
+
+        <!-- Mars Featured Image and Planet Data -->
+        <div class="row">
+            <div class="col-md-8">
+                <h2 class="heading" class="bold_text">Featured Mars Image</h2>
+
+            </div>
+            <div class="col-md-4">
+                <h2 class="heading" class="bold_text">Mars Facts</h2>
+            </div>
+        </div>
+
+
+        <hr>
+
+        <div class="row">
+            <div class="col-md-7">
+                <img src="{{ listings.JPL_Image }}" class="img-fluid" alt="Responsive image">
+            </div>
+            <div class="col-md-5">{{ listings.Mars_facts | safe }}
+            </div>
+        </div>
+
+        <hr>
+
+        <!-- Mars Hemispheres -->
+
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="heading" ; Align=Center class="bold_text">Mars Hemispheres</h2>
+
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="row" >
+            <!-- "for" loop to go through the dictionary -->
+            {% for title, url in listings.Mars_hem.items() %}
+         
+            <div class="col-md-6" style="border: 1px solid black; padding: 3px; ">
+
+                <img src="{{url}}" class="img-fluid" alt="Responsive image">
+                <h3 Align=Center> {{title}}</h3>
+            </div>
+     
+            {% endfor %}
+        </div>
+    </div>
+
+</body>
+
+</html>
